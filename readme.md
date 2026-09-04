@@ -1,17 +1,64 @@
 # Projetos DIO
 
-Este repositório é um espaço pessoal onde concentro os projetos desenvolvidos durante as aulas e cursos da [DIO (Digital Innovation One)](https://www.dio.me/).
+Repositório de estudos e projetos desenvolvidos durante minha jornada na [DIO (Digital Innovation One)](https://www.dio.me/).
 
-Não se trata de um projeto único, mas sim de uma coleção de exercícios e atividades práticas realizados ao longo da minha jornada de aprendizado na plataforma.
+Cada pasta representa uma aplicação independente, com seu próprio código, dependências e documentação.
 
-## Sobre a DIO
+## Projetos
 
-A DIO é uma plataforma de educação em tecnologia que oferece bootcamps, cursos e desafios práticos nas áreas de desenvolvimento de software, dados, cloud, entre outras.
+| Projeto | Descrição | Tecnologias |
+| --- | --- | --- |
+| [APIPODCAST](APIPODCAST/) | API de descoberta de episódios com interface web, filtros, busca, ordenação e paginação. | TypeScript, Node.js, HTTP nativo |
+| [QRCODE](QRCODE/) | Ferramenta de linha de comando para gerar QR Codes e senhas configuráveis. | JavaScript, Node.js |
 
-## Estrutura
+## Como executar
 
-Cada subpasta representa um projeto ou desafio diferente, organizado conforme os cursos e bootcamps concluídos.
+Os comandos devem ser executados dentro da pasta do projeto escolhido.
 
----
+### APIPODCAST
 
-> Repositório de estudos — conteúdo voltado para aprendizado e prática.
+```powershell
+cd APIPODCAST
+npm install
+$env:PORT="3333"
+npm run start:dev
+```
+
+Depois, abra a interface visual em <http://localhost:3333/>.
+
+A API também pode ser consultada diretamente:
+
+```text
+GET http://localhost:3333/api/podcasts
+GET http://localhost:3333/api/podcasts?q=flow&category=esporte
+```
+
+Documentação completa: [APIPODCAST/README.md](APIPODCAST/README.md).
+
+### QRCODE
+
+```powershell
+cd QRCODE
+npm install
+npm start
+```
+
+O programa apresenta um menu no terminal para escolher entre gerar um QR Code ou uma senha. A configuração da senha fica no arquivo `.env` do projeto.
+
+Documentação completa: [QRCODE/README.md](QRCODE/README.md).
+
+## Requisitos
+
+- Node.js 18 ou superior
+- npm
+
+## Organização
+
+```text
+.
+├── APIPODCAST/    # API e catálogo visual de episódios
+├── QRCODE/        # utilitários de QR Code e senha
+└── README.md      # visão geral do repositório
+```
+
+> Repositório de aprendizado, prática e evolução contínua.
