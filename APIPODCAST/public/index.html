@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Catálogo visual de episódios de podcast" />
+  <title>Wave Index | Podcast Discovery</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+
+<body>
+  <header class="topbar">
+    <a class="brand" href="/" aria-label="Wave Index - início">
+      <span class="brand-mark">W</span>
+      <span>WAVE<span class="brand-accent">/</span>INDEX</span>
+    </a>
+    <div class="topbar-meta"><span class="live-dot"></span> catálogo local · online</div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">PODCAST DISCOVERY / 001</p>
+        <h1>Encontre algo<br /><em>que fique.</em></h1>
+        <p class="hero-text">Uma curadoria pequena para ideias grandes. Explore episódios por assunto, nome ou humor do
+          dia.</p>
+        <div class="search-shell">
+          <span class="search-glyph">⌕</span>
+          <input id="search" type="search" placeholder="Buscar episódio ou podcast" autocomplete="off" />
+          <kbd>/</kbd>
+        </div>
+      </div>
+      <aside class="hero-note">
+        <span class="note-number">02</span>
+        <p>programas<br />indexados</p>
+        <span class="note-rule"></span>
+        <p class="note-small">Atualizado em<br /><strong>tempo real</strong></p>
+      </aside>
+    </section>
+
+    <section class="toolbar" aria-label="Filtros do catálogo">
+      <div class="filter-group" id="podcast-filters">
+        <button class="filter active" data-podcast="">Todos</button>
+        <button class="filter" data-podcast="flow">Flow</button>
+        <button class="filter" data-podcast="venus">Venus</button>
+      </div>
+      <div class="toolbar-right">
+        <label class="select-wrap">
+          <span>ordenar</span>
+          <select id="sort">
+            <option value="episode">episódio A-Z</option>
+            <option value="podcast">podcast A-Z</option>
+          </select>
+        </label>
+        <span class="result-count" id="result-count">carregando...</span>
+      </div>
+    </section>
+
+    <section class="catalog-head">
+      <div>
+        <p class="eyebrow">SELEÇÃO EDITORIAL</p>
+        <h2>Últimos episódios</h2>
+      </div>
+      <div class="category-pills" id="category-filters" aria-label="Filtrar por categoria"></div>
+    </section>
+
+    <section class="episode-grid" id="episode-grid" aria-live="polite"></section>
+    <div class="empty-state" id="empty-state" hidden>
+      <span>∅</span>
+      <h3>Nada encontrado.</h3>
+      <p>Tente uma busca diferente ou remova um filtro.</p>
+    </div>
+
+    <nav class="pagination" id="pagination" aria-label="Paginação"></nav>
+  </main>
+
+  <footer class="footer"><span>WAVE/INDEX</span><span>feito para ouvir com atenção</span><span>API PODCAST · TS</span>
+  </footer>
+  <script src="/app.js" defer></script>
+</body>
+
+</html>

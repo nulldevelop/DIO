@@ -1,24 +1,41 @@
-import { PodcastTransferModel } from "../models/Podcast-Transfer-Model";
-import { repositoryPodcast } from "../repositories/podcasts-repository";
+import { PodcastTransferModel } from "../models/podcast-transfer-model";
+import { PodcastQuery, PodcastSort } from "../models/podcast-model";
+import { serviceListEpisodes } from "./list-episodes-service";
 import { StatusCode } from "../utils/status-code";
 
 export const serviceFilterEpisodes = async (
-  podcastName: string | undefined
+  requestUrl: string | undefined
 ): Promise<PodcastTransferModel> => {
-  //define a interface de retorno
-  let responseFormat: PodcastTransferModel = {
-    statusCode: 0,
-    body: [],
+  const params = new URL(requestUrl ?? "/", "http://localhost").searchParams;
+  const page = Number(params.get("page") ?? "1");
+  const limit = Number(params.get("limit") ?? "10");
+  const sort = params.get("sort") ?? "episode";
+
+  if (
+    !Number.isInteger(page) ||
+    page < 1 ||
+    !Number.isInteger(limit) ||
+    limit < 1 ||
+    limit > 50 ||
+    !["episode", "podcast"].includes(sort)
+  ) {
+    return {
+      statusCode: StatusCode.BadRequest,
+      body: {
+        error:
+          "Parâmetros inválidos. Use page >= 1, limit entre 1 e 50 e sort=episode|podcast.",
+      },
+    };
+  }
+
+  const query: PodcastQuery = {
+    search: params.get("q") ?? undefined,
+    podcast: params.get("podcast") ?? undefined,
+    category: params.get("category") ?? undefined,
+    page,
+    limit,
+    sort: sort as PodcastSort,
   };
 
-  //buscando os dados
-  const queryString = podcastName?.split("?p=")[1] || "";
-  const data = await repositoryPodcast(queryString);
-
-  responseFormat = {
-    statusCode: data.length !== 0 ? StatusCode.OK : StatusCode.NoContent,
-    body: data,
-  };
-
-  return responseFormat;
+  return serviceListEpisodes(query);
 };
