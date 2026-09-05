@@ -1,15 +1,22 @@
+import { getAllPlayers, getPlayerById } from "../../repositories/players/player-repository.js";
 import { notFound, successResponse } from "../../utils/http-helper.js";
 
 export const getPlayerService = async (): Promise<any> => {
-  const data = [
-    { id: '1', name: 'Player One', team: 'Team A' },
-    { id: '2', name: 'Player Two', team: 'Team B' },
-    { id: '3', name: 'Player Three', team: 'Team C' },
-  ];
+  const data = await getAllPlayers()
 
   if (data.length === 0) {
     return notFound();
   }
 
   return successResponse(data);
+};
+
+export const getPlayerByIdService = async (id: string): Promise<any> => {
+  const player = await getPlayerById(id);
+
+  if (!player) {
+    return notFound();
+  }
+
+  return successResponse(player);
 };

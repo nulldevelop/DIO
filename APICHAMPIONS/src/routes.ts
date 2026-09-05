@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { getPlayers } from './controllers/players/players-controller.js';
+import { getPlayers, getPlayersById } from './controllers/players/players-controller.js';
 
 export const router = Router();
 
@@ -8,3 +8,4 @@ router.get('/', (req, res) => {
 });
 
 router.get('/players', getPlayers);
+router.get('/players/:id', getPlayersById);

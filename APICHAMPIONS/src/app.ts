@@ -1,5 +1,4 @@
-import express, { type Request, type Response } from "express";
-import { getPlayers } from "./controllers/players/players-controller.js";
+import express from "express";
 import { router } from "./routes.js";
 
 
