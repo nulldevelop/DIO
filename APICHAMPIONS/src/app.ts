@@ -1,6 +1,6 @@
 import express, { type Request, type Response } from "express";
 import { getPlayers } from "./controllers/players-controller.js";
-import { router } from "./routes/routes.js";
+import { router } from "./routes.js";
 
 
 export function createApp() {
