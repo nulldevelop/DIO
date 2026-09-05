@@ -10,3 +10,14 @@ export const getPlayerService = async (): Promise<any> => {
 
   return successResponse(data);
 };
+
+
+export const getPlayerByIdService = async (id: number): Promise<any> => {
+  const data = await getPlayerById(id)
+
+  if (!data) {
+    return notFound();
+  }
+
+  return successResponse(data);
+}

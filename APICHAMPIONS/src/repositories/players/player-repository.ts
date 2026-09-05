@@ -5,7 +5,7 @@ export const getAllPlayers = async (): Promise<PlayerModel[]> => {
   return dbPlayers;
 }
 
-export const getPlayerById = async (id: number): Promise<PlayerModel | null> => {
+export const getPlayerById = async (id: number): Promise<PlayerModel | undefined> => {
   const player = dbPlayers.find(player => player.id === id);
-  return player || null;
+  return player || undefined;
 }
